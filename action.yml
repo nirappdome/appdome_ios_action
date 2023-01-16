@@ -78,16 +78,8 @@ runs:
       run: chmod +x ./actions/actions/download.sh | chmod +x ./actions/actions/appdome_build_sign.sh
       shell: bash
     - name: Run download action files
-      run: ./actions/actions/download.sh ${{ inputs.keystore_file }} ${{ inputs.sign_overrids }} ${{ inputs.android_vanilla_file }}
+      run: ./actions/actions/download.sh {{inputs.p12_file}} ${{ inputs.Provisioning_Profiles }} ${{ inputs.entitlements_file }} ${{ inputs.sign_overrids }} ${{ inputs.ios_vanilla_file }}
       shell: bash
     - name: explore
       run: ls -lR
       shell: bash
-    - name: Run appdome bash action files
-      run: ./actions/actions/appdome_build_sign.sh ${{ inputs.sign_options }} ${{ inputs.sign_overrids }} ${{ inputs.google_play_signing }} ${{ inputs.fusion_set_id }} ${{ inputs.keystore_password }} ${{ inputs.keystore_alias }} ${{ inputs.key_pass }} ${{ inputs.signing_fingerprint }} ${{ inputs.appdome_key }}
-      shell: bash
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: workflow-artifacts
-        path: ./output/ # path to output folder
