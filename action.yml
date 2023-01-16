@@ -1,1 +1,93 @@
+name: Appdome Android Fuse Build And Sign iOS
+description: An Appdome action for build and sign iOS vanilla applications as a part of your ci/cd workflow activity
+branding:
+  icon: 'bluetooth'
+  color: 'blue'
 
+inputs:
+  appdome_key:
+    description: 'Appdome API key'
+    # Default value if no value is explicitly provided
+    default: '!'
+    # Input has to be provided for the workflow to run
+    required: true
+    ios_vanilla_file:
+      # Friendly description to be shown in the UI instead of 'name'
+      description: 'Download link for IPA file'
+      # Default value if no value is explicitly provided
+      default: ''
+      # Input has to be provided for the workflow to run
+      required: true
+    Fusion_set_id:
+      description: "IOS fusion set id"
+      default: ''
+      required: true
+    sign_otions:
+      type: choice
+      description: IOS Sign Options
+      options: 
+      - Appdome Signing
+      - Private Signing
+      - Auto-Dev Private Signing
+      required: true
+    p12_file:
+      # Friendly description to be shown in the UI instead of 'name'
+      description: 'Download link for P12 file'
+      # Default value if no value is explicitly provided
+      default: ''
+      # Input has to be provided for the workflow to run
+      required: false
+    p12_password:
+      # Friendly description to be shown in the UI instead of 'name'
+      description: 'P12 password'
+      # Default value if no value is explicitly provided
+      default: ''
+      required: false
+    Provisioning_Profiles:
+      description: 'Download link for Provisioning Profiles file'
+      default: ''
+      required: true
+    entitlements_file:
+      description: 'Download link for entitlements file'
+      default: ''
+      required: false
+    sign_overrids:
+      description: 'Download link for json sign overrides'
+      default: ''
+      required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Cloning appdome-api-python github repository
+      uses: actions/checkout@master
+      with:
+        repository: Appdome/appdome-api-python
+        ref: refs/heads/main
+        path: appdome
+    - name: My first step
+      run: sudo apt update | sudo apt install python3-pip | sudo pip3 install -r appdome/requirements.txt
+      shell: bash   
+    - name: Cloning actions
+      uses: actions/checkout@master
+      with:
+        repository: nirappdome/appdome_ios_action
+        ref: refs/heads/main
+        path: actions
+    - name: permissions
+      run: chmod +x ./actions/actions/download.sh | chmod +x ./actions/actions/appdome_build_sign.sh
+      shell: bash
+    - name: Run download action files
+      run: ./actions/actions/download.sh ${{ inputs.keystore_file }} ${{ inputs.sign_overrids }} ${{ inputs.android_vanilla_file }}
+      shell: bash
+    - name: explore
+      run: ls -lR
+      shell: bash
+    - name: Run appdome bash action files
+      run: ./actions/actions/appdome_build_sign.sh ${{ inputs.sign_options }} ${{ inputs.sign_overrids }} ${{ inputs.google_play_signing }} ${{ inputs.fusion_set_id }} ${{ inputs.keystore_password }} ${{ inputs.keystore_alias }} ${{ inputs.key_pass }} ${{ inputs.signing_fingerprint }} ${{ inputs.appdome_key }}
+      shell: bash
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: workflow-artifacts
+        path: ./output/ # path to output folder
