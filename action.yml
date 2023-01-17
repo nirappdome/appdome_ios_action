@@ -1,5 +1,5 @@
 name: Appdome iOS Fuse Build And Sign
-description: An Appdome action for build and sign iOS vanilla applications as a part of your ci/cd workflow activity
+description: An Appdome action for build and sign iOS vanilla applications as a part of your ci/cd pipline workflow
 branding:
   icon: 'bluetooth'
   color: 'blue'
