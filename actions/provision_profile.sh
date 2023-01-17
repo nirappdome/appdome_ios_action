@@ -1,5 +1,5 @@
 mkdir files/provision_profile
-VAR=$1
+VAR=$@
 echo $VAR
 counter=1
 for i in $VAR
