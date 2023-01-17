@@ -17,8 +17,10 @@ elif [[ $VAR != '!' ]]; then
 else
   echo "p12 not provided"
 fi
+VAR=$2
+echo $VAR
 counter=1
-for i in $2
+for i in $VAR
   do
     if [[ $i == htt* ]]; then
       echo "Downloading provision profile file"
@@ -31,8 +33,10 @@ for i in $2
     fi
     ((counter++))
   done
-counter=1  
-for i in $3
+VAR=$3
+echo $VAR
+counter=1
+for i in $VAR
   do
     if [[ $i == htt* ]]; then
       echo "Downloading entitlement file"
