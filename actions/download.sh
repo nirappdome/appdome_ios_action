@@ -7,6 +7,7 @@ mkdir files
 mkdir files/provision_profile
 mkdir files/entitlements
 VAR=$1
+echo $VAR
 if [[ $i == htt* ]]; then
   echo "Downloading p12 file"
   wget $VAR -O files/cert.p12
