@@ -78,7 +78,7 @@ runs:
       run: chmod +x ./actions/actions/download.sh | chmod +x ./actions/actions/appdome_build_sign.sh
       shell: bash
     - name: Run download action files
-      run: ./actions/actions/download.sh {{inputs.p12_file}} ${{ inputs.Provisioning_Profiles }} ${{ inputs.entitlements_file }} ${{ inputs.sign_overrids }} ${{ inputs.ios_vanilla_file }}
+      run: ./actions/actions/download.sh ${{ inputs.p12_file }} ${{ inputs.Provisioning_Profiles }} ${{ inputs.entitlements_file }} ${{ inputs.sign_overrids }} ${{ inputs.ios_vanilla_file }}
       shell: bash
     - name: explore
       run: ls -lR
