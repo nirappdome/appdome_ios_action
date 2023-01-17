@@ -11,50 +11,50 @@ inputs:
     default: '!'
     # Input has to be provided for the workflow to run
     required: true
-    ios_vanilla_file:
-      # Friendly description to be shown in the UI instead of 'name'
-      description: 'Download link for IPA file'
-      # Default value if no value is explicitly provided
-      default: '!'
-      # Input has to be provided for the workflow to run
-      required: true
-    Fusion_set_id:
-      description: "Appdome iOS fusion set id"
-      default: '!'
-      required: true
-    sign_otions:
-      type: choice
-      description: Appdome Sign Options
-      options: 
-      - Appdome Signing
-      - Private Signing
-      - Auto-Dev Private Signing
-      required: true
-    p12_file:
-      # Friendly description to be shown in the UI instead of 'name'
-      description: 'Download link for P12 file'
-      # Default value if no value is explicitly provided
-      default: '!'
-      # Input has to be provided for the workflow to run
-      required: false
-    p12_password:
-      # Friendly description to be shown in the UI instead of 'name'
-      description: 'P12 password'
-      # Default value if no value is explicitly provided
-      default: '!'
-      required: false
-    Provisioning_Profiles:
-      description: 'Download link for Provisioning Profiles file'
-      default: '!'
-      required: true
-    entitlements_file:
-      description: 'Download link for entitlements file'
-      default: '!'
-      required: false
-    sign_overrids:
-      description: 'Download link for json sign overrides'
-      default: '!'
-      required: false
+  ios_vanilla_file:
+    # Friendly description to be shown in the UI instead of 'name'
+    description: 'Download link for IPA file'
+    # Default value if no value is explicitly provided
+    default: '!'
+    # Input has to be provided for the workflow to run
+    required: true
+  fusion_set_id:
+    description: "Appdome iOS fusion set id"
+    default: '!'
+    required: true
+  sign_otions:
+    type: choice
+    description: Appdome Sign Options
+    options: 
+    - Appdome Signing
+    - Private Signing
+    - Auto-Dev Private Signing
+    required: true
+  p12_file:
+    # Friendly description to be shown in the UI instead of 'name'
+    description: 'Download link for P12 file'
+    # Default value if no value is explicitly provided
+    default: '!'
+    # Input has to be provided for the workflow to run
+    required: false
+  p12_password:
+    # Friendly description to be shown in the UI instead of 'name'
+    description: 'P12 password'
+    # Default value if no value is explicitly provided
+    default: '!'
+    required: false
+  provisioning_Profiles:
+    description: 'Download link for Provisioning Profiles file'
+    default: '!'
+    required: true
+  entitlements_file:
+    description: 'Download link for entitlements file'
+    default: '!'
+    required: false
+  sign_overrids:
+    description: 'Download link for json sign overrides'
+    default: '!'
+    required: false
 
 runs:
   using: "composite"
