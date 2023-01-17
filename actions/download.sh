@@ -2,8 +2,6 @@
 # $2 - ${{github.event.inputs.sign_overrids}}
 # $3 - ${{github.event.inputs.ios_vanilla_file}}
 mkdir files
-mkdir files/provision_profile
-mkdir files/entitlements
 VAR=$1
 echo $VAR
 if [[ $i == htt* ]]; then
