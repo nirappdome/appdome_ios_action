@@ -26,10 +26,10 @@ fi
 VAR=$3
 if [[ $VAR == htt* ]]; then
   echo "Downloading vanilla application"
-  wget $3 -O files/vanilla.apk
+  wget $3 -O files/vanilla.ipa
 elif [[ $VAR != '!' ]]; then
   echo "copy vanilla file to files/vanilla.apk"
-  cp $VAR files/vanilla.apk
+  cp $VAR files/vanilla.ipa
 else
   echo "vanilla file not provided!"
 fi
