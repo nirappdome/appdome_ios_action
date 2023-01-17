@@ -19,12 +19,12 @@ inputs:
       # Input has to be provided for the workflow to run
       required: true
     Fusion_set_id:
-      description: "IOS fusion set id"
+      description: "Appdome iOS fusion set id"
       default: '!'
       required: true
     sign_otions:
       type: choice
-      description: IOS Sign Options
+      description: Appdome Sign Options
       options: 
       - Appdome Signing
       - Private Signing
