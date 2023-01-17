@@ -1,3 +1,4 @@
+mkdir files/provision_profile
 VAR=$1
 echo $VAR
 counter=1
