@@ -92,3 +92,8 @@ runs:
     - name: explore
       run: ls -lR
       shell: bash
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: workflow-artifacts
+        path: ./output/ # path to output folder
