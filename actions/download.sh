@@ -1,8 +1,6 @@
 # $1 - {{github.event.inputs.p12_file}}
-# $2 - ${{github.event.inputs.Provisioning_Profiles}}
-# $3 - ${{github.event.inputs.entitlements_file}}
-# $4 - ${{github.event.inputs.sign_overrids}}
-# $5 - ${{github.event.inputs.ios_vanilla_file}}
+# $2 - ${{github.event.inputs.sign_overrids}}
+# $3 - ${{github.event.inputs.ios_vanilla_file}}
 mkdir files
 mkdir files/provision_profile
 mkdir files/entitlements
@@ -17,23 +15,7 @@ elif [[ $VAR != '!' ]]; then
 else
   echo "p12 not provided"
 fi
-VAR=$3
-echo $VAR
-counter=1
-for i in $VAR
-  do
-    if [[ $i == htt* ]]; then
-      echo "Downloading entitlement file"
-      wget $i -O "files/entitlements/${counter}.plist"
-    elif [[ $VAR != '!' ]]; then
-      echo "Copy entitlement file"
-      cp $i "files/entitlements/${counter}.plist"
-    else
-      echo "entitlement file not provided"
-    fi
-    ((counter++))
-  done
-VAR=$4
+VAR=$2
 if [[ $VAR == htt* ]]; then
   echo "Downloading json sign overrides"
   wget $VAR -O files/sign_overrides.json
@@ -43,7 +25,7 @@ elif [[ $VAR != '!' ]]; then
 else
   echo "sign overrides file not provided!"
 fi
-VAR=$5
+VAR=$3
 if [[ $VAR == htt* ]]; then
   echo "Downloading vanilla application"
   wget $3 -O files/vanilla.apk
