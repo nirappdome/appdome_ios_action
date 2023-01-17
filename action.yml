@@ -22,7 +22,7 @@ inputs:
     description: "Appdome iOS fusion set id"
     default: '!'
     required: true
-  sign_otions:
+  sign_options:
     type: choice
     description: Appdome Sign Options
     options: 
