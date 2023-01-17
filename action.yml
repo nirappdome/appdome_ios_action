@@ -86,6 +86,9 @@ runs:
     - name: Run provision_profile.sh
       run: ./actions/actions/provision_profile.sh ${{ inputs.Provisioning_Profiles }}
       shell: bash
+    - name: Run appdome_build_sign.sh
+      run: ./actions/actions/appdome_build_sign.sh ${{inputs.appdome_key}} ${{ inputs.fusion_set_id }} ${{ inputs.sign_options }} ${{ inputs.sign_overrids }} ${{ inputs.entitlements_file }} ${{ inputs.p12_password }}
+      shell: bash
     - name: explore
       run: ls -lR
       shell: bash
