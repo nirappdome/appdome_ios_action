@@ -1,3 +1,4 @@
+mkdir files/entitlements
 VAR=$1
 echo $VAR
 counter=1
