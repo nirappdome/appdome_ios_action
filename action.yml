@@ -77,8 +77,14 @@ runs:
     - name: permissions
       run: chmod +x ./actions/actions/download.sh | chmod +x ./actions/actions/appdome_build_sign.sh
       shell: bash
-    - name: Run download action files
-      run: ./actions/actions/download.sh ${{ inputs.p12_file }} ${{ inputs.Provisioning_Profiles }} ${{ inputs.entitlements_file }} ${{ inputs.sign_overrids }} ${{ inputs.ios_vanilla_file }}
+    - name: Run download.sh
+      run: ./actions/actions/download.sh ${{ inputs.p12_file }} ${{ inputs.sign_overrids }} ${{ inputs.ios_vanilla_file }}
+      shell: bash
+    - name: Run entitlements.sh
+      run: ./actions/actions/entitlements.sh ${{ inputs.entitlements_file }}
+      shell: bash
+    - name: Run provision_profile.sh
+      run: ./actions/actions/entitlements.sh ${{ inputs.Provisioning_Profiles }}
       shell: bash
     - name: explore
       run: ls -lR
